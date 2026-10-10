@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Happy Birthday, Acaa!</title>
+
+  <!-- This script pulls in Tailwind CSS for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- These are for the animations and photo gallery -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css" />
+
+  <!-- Google Fonts for the Anime look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Link to your new external CSS file -->
+  <link rel="stylesheet" href="style.css">
+  <!-- IMPORTANT: Replace with a real image link after you upload it -->
+  <meta property="og:image" content="https://placehold.co/1200x630/87CEEB/FFFFFF?text=Happy+Birthday+Acaa">
+</head>
+<body class="gate-on">
+<!-- ===== Opening gate: shown before the real website ===== -->
+<div id="gate" class="gate" role="dialog" aria-label="Halaman pembuka">
+  <div class="gate-bg" id="gate-bg" aria-hidden="true"></div>
+
+  <!-- 1 -->
+  <section class="gate-stage" id="st-hi" hidden>
+    <p class="gate-text font-anime" id="t-hi">Haiii! i'm Dduy, ur boyfriend</p>
+    <p class="gate-hint" id="hint-hi">tap to continue</p>
+  </section>
+
+  <!-- 1b : the desk (appears after "Haiii!…", before the name question) -->
+  <section class="desk-stage" id="st-desk" hidden aria-label="Meja belajar">
+    <div class="desk-cam" id="desk-cam">
+      <div class="desk-wood"></div>
+      <div class="desk-mat"></div>
+      <img class="ds" id="d-phone" src="img/desk/phone.webp" alt="" draggable="false">
+      <img class="ds" id="d-glass" src="img/desk/glass.webp" alt="" draggable="false">
+      <img class="ds" id="d-laptop" src="img/desk/laptop.webp" alt="" draggable="false">
+      <img class="ds" id="d-redbook" src="img/desk/redbook.webp" alt="" draggable="false">
+      <img class="ds" id="d-pomade" src="img/desk/pomade.webp" alt="" draggable="false">
+      <img class="ds" id="d-notebook" src="img/desk/notebook.webp" alt="" draggable="false">
+      <img class="ds" id="d-mouse" src="img/desk/mouse.webp" alt="" draggable="false">
+      <img class="ds" id="d-blues" src="img/desk/blues.webp" alt="" draggable="false">
+      <img class="ds" id="d-lip" src="img/desk/lip.webp" alt="" draggable="false">
+    </div>
+    <div class="desk-ui" id="desk-ui">
+      <div class="paper-card" id="paper" hidden>
+        <p class="paper-text" id="paper-text" aria-label="Perjanjian untuk diketik"></p>
+        <p class="paper-cap">type to continue the journey, perjanjian Dduy dan kamu yang lagi ngetik</p>
+        <div class="lives paper-lives" id="paper-lives" aria-label="Sisa typo"><i></i><i></i><i></i></div>
+        <input class="paper-input" id="paper-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="Ketik perjanjian di sini">
+      </div>
+      <p class="paper-tap" id="paper-tap" hidden>tap kartunya buat mulai ngetik</p>
+    </div>
+    <div class="desk-fail" id="desk-fail" hidden aria-live="assertive"><p class="fail-text font-anime" id="fail-text" hidden>BECUSN'T</p></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="gate-stage" id="st-name" hidden>
+    <p class="gate-text font-anime" id="t-name">Apakah kamu yang namanya Sasha Oktavia Melani?</p>
+    <div class="gate-btns" id="b-name">
+      <button type="button" class="candy" data-act="yes">IYAK</button>
+      <button type="button" class="candy" data-act="no">BUKAN</button>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="gate-stage" id="st-nick" hidden>
+    <p class="gate-text font-anime" id="t-nick">panggilan Dduy ke Sasha emang apa kalo kamu beneran Sasha?</p>
+    <div class="gate-pop" id="pop-nick" hidden>
+      <button type="button" class="candy" data-act="Sashul">Sashul</button>
+      <button type="button" class="candy" data-act="Sasa">Sasa</button>
+      <button type="button" class="candy" data-act="Acaa">Acaa</button>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="gate-stage" id="st-pin" hidden>
+    <div class="pin-scene" id="pin-scene">
+      <div class="calc" id="calc">
+        <p class="calc-label font-anime">Masukin PIN</p>
+        <div class="heart-fx" id="heart-fx" aria-hidden="true"></div>
+        <div class="calc-display" id="pin-display" aria-live="polite">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="calc-msg" id="pin-msg"></p>
+        <div class="calc-keys" id="pin-keys">
+          <button type="button" class="key" data-k="1">1</button>
+          <button type="button" class="key" data-k="2">2</button>
+          <button type="button" class="key" data-k="3">3</button>
+          <button type="button" class="key" data-k="4">4</button>
+          <button type="button" class="key" data-k="5">5</button>
+          <button type="button" class="key" data-k="6">6</button>
+          <button type="button" class="key" data-k="7">7</button>
+          <button type="button" class="key" data-k="8">8</button>
+          <button type="button" class="key" data-k="9">9</button>
+          <button type="button" class="key fn" data-k="C" aria-label="Hapus semua">C</button>
+          <button type="button" class="key" data-k="0">0</button>
+          <button type="button" class="key fn" data-k="B" aria-label="Hapus satu">&#9003;</button>
+          <button type="button" class="key ok" data-k="OK">OK</button>
+        </div>
+        <div class="lives" id="lives" aria-label="Sisa kesempatan"><i></i><i></i><i></i></div>
+      </div>
+
+      <!-- Acaa's head + chat bubble (moves between the right and left side of the PIN pad) -->
+      <div class="acaa-wrap right" id="acaa-wrap" hidden>
+        <div class="bubble-box" id="bubble-box">
+          <div class="bubble" id="bubble" role="status" aria-live="polite"><span class="bubble-text font-anime" id="bubble-text"></span></div>
+        </div>
+        <div class="acaa" id="acaa">
+          <img src="img/acaa-head.webp" alt="" width="476" height="520" draggable="false">
+          <i class="anger a1" aria-hidden="true"></i><i class="anger a2" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="gate-stage" id="st-hbd" hidden>
+    <p class="gate-text font-anime" id="t-hbd">Haiiii acaaa, Dduy mau ngucapin Selamat Ulang Tahun hehehe</p>
+    <p class="gate-pop-text font-anime" id="t-look" hidden>have a look, hadiah digital kecil dari akuuu</p>
+    <div class="enjoy-wrap" id="enjoy-wrap" hidden>
+      <div class="swirl-bg" aria-hidden="true"></div>
+      <div class="enjoy font-anime" id="enjoy" aria-label="ENJOY!"><span>E</span><span>N</span><span>J</span><span>O</span><span>Y</span><span>!</span></div>
+    </div>
+  </section>
+</div>
+<noscript><style>#gate{display:none!important} body.gate-on>*{visibility:visible!important} body.gate-on{overflow:auto!important}</style></noscript>
+
+<!-- Canvas for the falling cherry blossoms -->
+<canvas id="sakura-canvas"></canvas>
+
+<!-- Section 1: Hero Welcome -->
+<header class="hero-section">
+  <video class="hero-video" autoplay loop muted playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true">
+    <source src="img/sa.mp4" type="video/mp4">
+    <source src="img/sa.webm" type="video/webm">
+  </video>
+  <div class="hero-shade"></div>
+
+  <button type="button" class="hero-age" id="age-badge" aria-label="23 years old. Ketuk untuk membuka kejutan" aria-haspopup="dialog"><i class="age-sheen" aria-hidden="true"></i><b>23</b><span>years old</span></button>
+
+  <div class="hero-copy">
+    <h1 class="font-anime">It's your day to shine! Hepiiiii Birthdayyyyy</h1>
+    <p>Keep it up sayangggg, wishing you nothing but upgrades from here on out</p>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mx-auto p-6 md:p-12">
+
+  <!-- Section 2: A Letter For You -->
+  <section class="my-16 md:my-24 max-w-3xl mx-auto text-center" data-aos="fade-up">
+    <h2 class="text-4xl md:text-5xl font-anime text-sakura mb-8 drop-shadow-sm">A Special Message For You</h2>
+    <div class="text-left text-lg leading-relaxed space-y-5 bg-white p-8 md:p-10 rounded-lg shadow-lg">
+      <p>Mowrninggg Acaa ⛅🫶</p>
+      <p>Happy birthday my beloved girl, aku seseneng itu ngebuat what i mentioned earlier “hadiah digital kecilku”. Dari hati mungilku ini, i wanna say. Sayang, kamu keren sayang. U’re proving to me that kamu bisa ngejalanin apa yang kamu lakukan dengan sebaik mungkin.</p>
+      <p>Alhamdulillah kamu udah diterima di BPJS Kesehatan dengan lingkungan yang super supportive. Notion kamu juga kesebar dan kuyakin kalo kamu develop lagi, kamu bakalan jadi lebih ternotice sama semua atasanmu dan bakalan lebih diandelin wuhuuuuuuuw 🤩😘 (maksudnya yang baik loh yaaaaa hehehe 😄).</p>
+      <p>Makasih sayang udah bikin aku banyak senyum dan hepi dengan semua pap yang kamu kasih ke aku. Makasih dengan momen-momen yang sudah kita lalui bareng, momen dari awal kita PDKT sampe kamu dapet diterima di dunia kerja lagi sayang. I’m so happy ngebuat website ini ke kamu. I just want u to know that i love u so much sayang, aku ngetiknya sambil mewek. Why? because i’m so happy that kamu dapet chances itu sayang. And yeah. This is a small gift for u. Have a look and enjoy every corner of this website sayang. 😘😜✌️</p>
+      <p class="text-right mt-8">
+        Ur support from afar,<br>
+        Dduy
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 3: Chapters of Us -->
+  <section class="my-16 md:my-24">
+    <h2 class="text-4xl md:text-5xl font-anime text-center mb-12 md:mb-16" data-aos="fade-up">Chapters of Us</h2>
+    <div class="space-y-20 md:space-y-28 max-w-6xl mx-auto">
+      <!-- Chapter 01: First time ever we met -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c01-1.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c01-1.jpg" alt="First time ever we met, foto 1" width="960" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c01-2.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c01-2.jpg" alt="First time ever we met, foto 2" width="960" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c01-3.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c01-3.jpg" alt="First time ever we met, foto 3" width="960" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-tl" style="--d:-0.6s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="2" stroke-linejoin="round"/><ellipse cx="29" cy="25" rx="7" ry="4" fill="#fff" opacity=".6" transform="rotate(-30 29 25)"/><circle cx="37" cy="44" r="3.3" fill="#2c3e50"/><circle cx="63" cy="44" r="3.3" fill="#2c3e50"/><circle cx="36" cy="42.8" r="1.15" fill="#fff"/><circle cx="62" cy="42.8" r="1.15" fill="#fff"/><ellipse cx="30" cy="51" rx="5" ry="3" fill="#E8628F" opacity=".35"/><ellipse cx="70" cy="51" rx="5" ry="3" fill="#E8628F" opacity=".35"/><path d="M45.5 50 Q50 55.5 54.5 50" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 01</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">First time ever we met</h3>
+          <p class="mt-3 text-lg leading-relaxed">Ah yes, awal mula banget ketemu Acaa. Aku dari kantor di Sudirman langsung ke UNJ, congratsssss Sashaaa (belum Acaa n Dduy nihhh). Suasana canggung to the max. Walaupun aku ditemenin Wawa (temen kantorku), tetep aja di sana ditinggalin, wkwkwk, jadi ngebaur dikit walaupun jiwa introvertku bergejolak.</p>
+        </div>
+      </article>
+      <!-- Chapter 02: No Jaim Blok M -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c02-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c02-1.jpg" alt="No Jaim Blok M, foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c02-2.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c02-2.jpg" alt="No Jaim Blok M, foto 2" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c02-3.jpg" draggable="false" data-ar="0.6719"><img src="img/chapters/c02-3.jpg" alt="No Jaim Blok M, foto 3" width="860" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-br" style="--d:-1.2s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M26 76 C10 76 5 62 12 52 C14 44 22 40 30 42 C32 28 46 20 58 26 C66 18 82 24 82 38 C94 38 98 54 90 65 C86 73 80 76 74 76 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M26 76 C10 76 5 62 12 52 C14 44 22 40 30 42 C32 28 46 20 58 26 C66 18 82 24 82 38 C94 38 98 54 90 65 C86 73 80 76 74 76 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="2" stroke-linejoin="round"/><ellipse cx="36" cy="40" rx="8" ry="4" fill="#fff" opacity=".5" transform="rotate(-25 36 40)"/><circle cx="37" cy="56" r="3.3" fill="#2c3e50"/><circle cx="63" cy="56" r="3.3" fill="#2c3e50"/><circle cx="36" cy="54.8" r="1.15" fill="#fff"/><circle cx="62" cy="54.8" r="1.15" fill="#fff"/><ellipse cx="30" cy="63" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="70" cy="63" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><path d="M45.5 62 Q50 67.5 54.5 62" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 02</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">No Jaim Blok M</h3>
+          <p class="mt-3 text-lg leading-relaxed">First date benget nih, masih inget banget saling ketemu di Taman Literasi Transuman dari rumah masing-masing. Udah tuh, gaada tuh kata orang-orang canggung gitu. Kita mah kebanyakan gula, jadi first date kochakkk.</p>
+        </div>
+      </article>
+      <!-- Chapter 03: Brand New Day -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c03-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c03-1.jpg" alt="Brand New Day, foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c03-2.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c03-2.jpg" alt="Brand New Day, foto 2" width="1280" height="720" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c03-3.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c03-3.jpg" alt="Brand New Day, foto 3" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-tr" style="--d:-1.8s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M44 56 L33 86 L47 79 L51 60 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M56 56 L67 86 L53 79 L49 60 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M50 50 C36 30 12 28 10 44 C8 60 30 66 50 50 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M50 50 C64 30 88 28 90 44 C92 60 70 66 50 50 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><circle cx="50" cy="50" r="9" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><path d="M44 56 L33 86 L47 79 L51 60 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="2" stroke-linejoin="round"/><path d="M56 56 L67 86 L53 79 L49 60 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="2" stroke-linejoin="round"/><path d="M50 50 C36 30 12 28 10 44 C8 60 30 66 50 50 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="2" stroke-linejoin="round"/><path d="M50 50 C64 30 88 28 90 44 C92 60 70 66 50 50 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="2" stroke-linejoin="round"/><path d="M18 44 C24 38 34 40 40 48" fill="none" stroke="#fff" stroke-width="2.5" opacity=".55" stroke-linecap="round"/><circle cx="50" cy="50" r="9" fill="#E8628F"/><ellipse cx="47" cy="47" rx="3" ry="2" fill="#fff" opacity=".5"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 03</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Brand New Day</h3>
+          <p class="mt-3 text-lg leading-relaxed">Second date banget, aku sama Acaa pergi ke GI nonton Spider-Man: Brand New Day. Ternyata hari itu beneran brand new day, gegara aku abis nonton diminta ke rumahnya Acaa, terus dibikinin crochet Spider-Man juga bedua sama Acaa.</p>
+        </div>
+      </article>
+      <!-- Chapter 04: TMII Mnya Menyehatkan -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c04-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c04-1.jpg" alt="TMII Mnya Menyehatkan, foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c04-2.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c04-2.jpg" alt="TMII Mnya Menyehatkan, foto 2" width="1280" height="720" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c04-3.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c04-3.jpg" alt="TMII Mnya Menyehatkan, foto 3" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-bl" style="--d:-2.4s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><polygon points="50.0,16.0 60.6,37.4 84.2,40.9 67.1,57.6 71.2,81.1 50.0,70.0 28.8,81.1 32.9,57.6 15.8,40.9 39.4,37.4" fill="#ffffff" stroke="#ffffff" stroke-width="22" stroke-linejoin="round"/><polygon points="50.0,16.0 60.6,37.4 84.2,40.9 67.1,57.6 71.2,81.1 50.0,70.0 28.8,81.1 32.9,57.6 15.8,40.9 39.4,37.4" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="10" stroke-linejoin="round"/><circle cx="39" cy="54" r="3" fill="#2c3e50"/><circle cx="61" cy="54" r="3" fill="#2c3e50"/><circle cx="38" cy="52.8" r="1.05" fill="#fff"/><circle cx="60" cy="52.8" r="1.05" fill="#fff"/><ellipse cx="32" cy="61" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="68" cy="61" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><path d="M45.5 60 Q50 65.5 54.5 60" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 04</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">TMII Mnya Menyehatkan</h3>
+          <p class="mt-3 text-lg leading-relaxed">Third date pergi ke TMII, kita jogging bareng. Aku pertama kali ke rumahmu langsung dari Depoks yayyy! Kita ngiterin full area yang ganyampe 7 kilo, terus nyobain shuttle, trus pulang kampung ke Padang ama Jakartah.</p>
+        </div>
+      </article>
+      <!-- Chapter 05: Kero Kero Cafe -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c05-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c05-1.jpg" alt="Kero Kero Cafe, foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c05-2.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c05-2.jpg" alt="Kero Kero Cafe, foto 2" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c05-3.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c05-3.jpg" alt="Kero Kero Cafe, foto 3" width="1280" height="720" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-tl" style="--d:-0.0s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><circle cx="50.0" cy="25.0" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="73.8" cy="42.3" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="64.7" cy="70.2" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="35.3" cy="70.2" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="26.2" cy="42.3" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="50.0" cy="25.0" r="19" fill="#FF8FB3"/><circle cx="73.8" cy="42.3" r="19" fill="#FF8FB3"/><circle cx="64.7" cy="70.2" r="19" fill="#FF8FB3"/><circle cx="35.3" cy="70.2" r="19" fill="#FF8FB3"/><circle cx="26.2" cy="42.3" r="19" fill="#FF8FB3"/><circle cx="50" cy="50" r="16" fill="#FFF7FA"/><circle cx="43.5" cy="49" r="2.5" fill="#2c3e50"/><circle cx="56.5" cy="49" r="2.5" fill="#2c3e50"/><circle cx="42.5" cy="47.8" r="0.88" fill="#fff"/><circle cx="55.5" cy="47.8" r="0.88" fill="#fff"/><path d="M45.5 55 Q50 60.5 54.5 55" fill="none" stroke="#2c3e50" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 05</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Kero Kero Cafe</h3>
+          <p class="mt-3 text-lg leading-relaxed">Dduy nanya, “Ehhh, ada gasih cafe yang unik deket-deket sini?” Acaa jawab, “Ada nih, Kero.” Enak sih enak, matcha ube sama berry americanonya, cafenya oke, comfy. Cuma SO HOT, AC cuma satu-satu di 2 ruangan.</p>
+        </div>
+      </article>
+      <!-- Chapter 06: WIW Finally Skripsi DONE -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c06-1.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c06-1.jpg" alt="WIW Finally Skripsi DONE, foto 1" width="1050" height="1400" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c06-2.jpg" draggable="false" data-ar="0.5621"><img src="img/chapters/c06-2.jpg" alt="WIW Finally Skripsi DONE, foto 2" width="787" height="1400" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-br" style="--d:-0.6s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><circle cx="26" cy="27" r="15" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="74" cy="27" r="15" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="50" cy="57" r="36" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="26" cy="27" r="15" fill="#6CBBF2"/><circle cx="26" cy="27" r="8" fill="#C9E6FB"/><circle cx="74" cy="27" r="15" fill="#6CBBF2"/><circle cx="74" cy="27" r="8" fill="#C9E6FB"/><circle cx="50" cy="57" r="36" fill="#6CBBF2"/><ellipse cx="50" cy="68" rx="15" ry="11" fill="#C9E6FB"/><ellipse cx="50" cy="62" rx="4.6" ry="3.2" fill="#2c3e50"/><path d="M50 65 v3 M50 68 q-4 4 -8 1 M50 68 q4 4 8 1" fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round"/><circle cx="35" cy="51" r="3.4" fill="#2c3e50"/><circle cx="65" cy="51" r="3.4" fill="#2c3e50"/><circle cx="34" cy="49.8" r="1.2" fill="#fff"/><circle cx="64" cy="49.8" r="1.2" fill="#fff"/><ellipse cx="26" cy="62" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="74" cy="62" rx="5" ry="3" fill="#3D90D6" opacity=".35"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 06</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">WIW Finally Skripsi DONE</h3>
+          <p class="mt-3 text-lg leading-relaxed">Yeyyyy, congrats Acaa sayang, u made it! Kamu uda selesain all of ur skripsi, sampe semua syarat TTD-nya kelar, plus sampe hardcopy-nya. Ehhehee, love ur cute smile di sini.</p>
+        </div>
+      </article>
+      <!-- Chapter 07: Nembak moment (maluuu) -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c07-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c07-1.jpg" alt="Nembak moment (maluuu), foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c07-2.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c07-2.jpg" alt="Nembak moment (maluuu), foto 2" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c07-3.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c07-3.jpg" alt="Nembak moment (maluuu), foto 3" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-tr" style="--d:-1.2s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><circle cx="26" cy="27" r="15" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="74" cy="27" r="15" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="50" cy="57" r="36" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="26" cy="27" r="15" fill="#FF8FB3"/><circle cx="26" cy="27" r="8" fill="#FFD3E0"/><circle cx="74" cy="27" r="15" fill="#FF8FB3"/><circle cx="74" cy="27" r="8" fill="#FFD3E0"/><circle cx="50" cy="57" r="36" fill="#FF8FB3"/><ellipse cx="50" cy="68" rx="15" ry="11" fill="#FFD3E0"/><ellipse cx="50" cy="62" rx="4.6" ry="3.2" fill="#2c3e50"/><path d="M50 65 v3 M50 68 q-4 4 -8 1 M50 68 q4 4 8 1" fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round"/><circle cx="35" cy="51" r="3.4" fill="#2c3e50"/><circle cx="65" cy="51" r="3.4" fill="#2c3e50"/><circle cx="34" cy="49.8" r="1.2" fill="#fff"/><circle cx="64" cy="49.8" r="1.2" fill="#fff"/><ellipse cx="26" cy="62" rx="5" ry="3" fill="#E8628F" opacity=".35"/><ellipse cx="74" cy="62" rx="5" ry="3" fill="#E8628F" opacity=".35"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 07</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Nembak moment (maluuu)</h3>
+          <p class="mt-3 text-lg leading-relaxed">Holy moment di hutan kota GBK. Di sini aku nembak Acaa, yayy, finally after along waiting dari awal. Jujur degdegan banget, kalo kamu bilang engga waktu itu, soalnya bakal balik Depok lemes brutal. Pertama kali aku nyoba dan diajarin crochet, btw, sama my girl hehehe.</p>
+        </div>
+      </article>
+      <!-- Chapter 08: Welkam This is CFD DEPOK -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c08-1.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c08-1.jpg" alt="Welkam This is CFD DEPOK, foto 1" width="960" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c08-2.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c08-2.jpg" alt="Welkam This is CFD DEPOK, foto 2" width="960" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c08-3.jpg" draggable="false" data-ar="1.3333"><img src="img/chapters/c08-3.jpg" alt="Welkam This is CFD DEPOK, foto 3" width="1280" height="960" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-bl" style="--d:-1.8s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><g transform="translate(46 54) scale(0.78) translate(-50 -50)"><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="15" stroke-linejoin="round"/><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(82 20) scale(0.3) translate(-50 -50)"><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="34" stroke-linejoin="round"/><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(16 84) scale(0.24) translate(-50 -50)"><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="42" stroke-linejoin="round"/><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="3" stroke-linejoin="round"/></g></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 08</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Welkam This is CFD DEPOK</h3>
+          <p class="mt-3 text-lg leading-relaxed">Karena udah officially, langsung aja aku ajak ke domain aku, domain expansion CFD Depokkk. Ke sana beli dimsum atau lucu-lucu? NO. Kita beli krupuk kuning guedeee pol. Aku ajak keliling, ajak nyeritain dari rumah aku sampe rumah kamu lewat mana aja, dan itu seru bangettt, aku bisa ceritain perjalananku.</p>
+        </div>
+      </article>
+      <!-- Chapter 09: Kangen Random Shopping -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c09-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c09-1.jpg" alt="Kangen Random Shopping, foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c09-2.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c09-2.jpg" alt="Kangen Random Shopping, foto 2" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c09-3.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c09-3.jpg" alt="Kangen Random Shopping, foto 3" width="1280" height="720" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c09-4.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c09-4.jpg" alt="Kangen Random Shopping, foto 4" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-tl" style="--d:-2.4s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><g transform="translate(46 54) scale(0.78) translate(-50 -50)"><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="15" stroke-linejoin="round"/><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(82 20) scale(0.3) translate(-50 -50)"><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="34" stroke-linejoin="round"/><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="3" stroke-linejoin="round"/></g><g transform="translate(16 84) scale(0.24) translate(-50 -50)"><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#ffffff" stroke="#ffffff" stroke-width="42" stroke-linejoin="round"/><path d="M50 6 C54 34 66 46 94 50 C66 54 54 66 50 94 C46 66 34 54 6 50 C34 46 46 34 50 6 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="3" stroke-linejoin="round"/></g></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 09</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Kangen Random Shopping</h3>
+          <p class="mt-3 text-lg leading-relaxed">Pertama kali nih ke Pondok Gede, kawasan kamu juga, sayang. Nyari hadiah buat bundaku doang sama keran papamu, dengan semua adegan freaky kita itu, tapi lucu sihhh.</p>
+        </div>
+      </article>
+      <!-- Chapter 10: New me New Hair (ureee too cuteeee) -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c10-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c10-1.jpg" alt="New me New Hair (ureee too cuteeee), foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c10-2.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c10-2.jpg" alt="New me New Hair (ureee too cuteeee), foto 2" width="1280" height="720" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c10-3.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c10-3.jpg" alt="New me New Hair (ureee too cuteeee), foto 3" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c10-4.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c10-4.jpg" alt="New me New Hair (ureee too cuteeee), foto 4" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-br" style="--d:-0.0s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="2" stroke-linejoin="round"/><ellipse cx="29" cy="25" rx="7" ry="4" fill="#fff" opacity=".6" transform="rotate(-30 29 25)"/><circle cx="37" cy="44" r="3.3" fill="#2c3e50"/><circle cx="63" cy="44" r="3.3" fill="#2c3e50"/><circle cx="36" cy="42.8" r="1.15" fill="#fff"/><circle cx="62" cy="42.8" r="1.15" fill="#fff"/><ellipse cx="30" cy="51" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="70" cy="51" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><path d="M45.5 50 Q50 55.5 54.5 50" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 10</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">New me New Hair (ureee too cuteeee)</h3>
+          <p class="mt-3 text-lg leading-relaxed">Yappp, ini dia, definisi brand new hair, ahayyy. Aku sangat menunggu kejadian ini banget, finallya kamu sama aku new style of hair. Sayang, kamu imutttt bangettt kalo dicepol, whahahaa.</p>
+        </div>
+      </article>
+      <!-- Chapter 11: Blok M REMAKE (sekarang dah official yayy) -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c11-1.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c11-1.jpg" alt="Blok M REMAKE (sekarang dah official yayy), foto 1" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c11-2.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c11-2.jpg" alt="Blok M REMAKE (sekarang dah official yayy), foto 2" width="720" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c11-3.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c11-3.jpg" alt="Blok M REMAKE (sekarang dah official yayy), foto 3" width="1280" height="720" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c11-4.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c11-4.jpg" alt="Blok M REMAKE (sekarang dah official yayy), foto 4" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-tr" style="--d:-0.6s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><polygon points="50.0,16.0 60.6,37.4 84.2,40.9 67.1,57.6 71.2,81.1 50.0,70.0 28.8,81.1 32.9,57.6 15.8,40.9 39.4,37.4" fill="#ffffff" stroke="#ffffff" stroke-width="22" stroke-linejoin="round"/><polygon points="50.0,16.0 60.6,37.4 84.2,40.9 67.1,57.6 71.2,81.1 50.0,70.0 28.8,81.1 32.9,57.6 15.8,40.9 39.4,37.4" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="10" stroke-linejoin="round"/><circle cx="39" cy="54" r="3" fill="#2c3e50"/><circle cx="61" cy="54" r="3" fill="#2c3e50"/><circle cx="38" cy="52.8" r="1.05" fill="#fff"/><circle cx="60" cy="52.8" r="1.05" fill="#fff"/><ellipse cx="32" cy="61" rx="5" ry="3" fill="#E8628F" opacity=".35"/><ellipse cx="68" cy="61" rx="5" ry="3" fill="#E8628F" opacity=".35"/><path d="M45.5 60 Q50 65.5 54.5 60" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 11</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Blok M REMAKE (sekarang dah official yayy)</h3>
+          <p class="mt-3 text-lg leading-relaxed">And here it is, kembali ke Blok M versi remake. Yg dulu no status, sekarang berstatus. Kalo kata Acaa, “Nanti kita fotonya yang versi lucu yaaaa, jangan gimik lagi.” Best moment banget, love ur style sayang, love ur outfit, ur new hair amazing bangetttt.</p>
+        </div>
+      </article>
+      <!-- Chapter 12: Proud BF, Congrats Sayang -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c12-1.jpg" draggable="false" data-ar="0.7500"><img src="img/chapters/c12-1.jpg" alt="Proud BF, Congrats Sayang, foto 1" width="960" height="1280" draggable="false" loading="lazy"></a><a class="slide" href="img/chapters/c12-2.jpg" draggable="false" data-ar="0.5625"><img src="img/chapters/c12-2.jpg" alt="Proud BF, Congrats Sayang, foto 2" width="720" height="1280" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-bl" style="--d:-1.2s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><circle cx="50.0" cy="25.0" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="73.8" cy="42.3" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="64.7" cy="70.2" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="35.3" cy="70.2" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="26.2" cy="42.3" r="19" fill="#ffffff" stroke="#ffffff" stroke-width="12"/><circle cx="50.0" cy="25.0" r="19" fill="#6CBBF2"/><circle cx="73.8" cy="42.3" r="19" fill="#6CBBF2"/><circle cx="64.7" cy="70.2" r="19" fill="#6CBBF2"/><circle cx="35.3" cy="70.2" r="19" fill="#6CBBF2"/><circle cx="26.2" cy="42.3" r="19" fill="#6CBBF2"/><circle cx="50" cy="50" r="16" fill="#FFF7FA"/><circle cx="43.5" cy="49" r="2.5" fill="#2c3e50"/><circle cx="56.5" cy="49" r="2.5" fill="#2c3e50"/><circle cx="42.5" cy="47.8" r="0.88" fill="#fff"/><circle cx="55.5" cy="47.8" r="0.88" fill="#fff"/><path d="M45.5 55 Q50 60.5 54.5 55" fill="none" stroke="#2c3e50" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 12</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Proud BF, Congrats Sayang</h3>
+          <p class="mt-3 text-lg leading-relaxed">Oyeahhh, ini dia penantian yang dinanti-nantikan! Acaa dan Dduy dapet new work lagiii, uhuy. Paragonian dan BPJS Kesehatan crew (apa yak namanya, hehe). Alhamdulillah, I’m proud of u sayang, finally bisa masuk ke dunia kerja lagi after the entire college journey.</p>
+        </div>
+      </article>
+      <!-- Chapter 13: Date After Sibuks -->
+      <article class="chapter flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:0.8000">
+          <div class="carousel-track">
+            <div class="slide" data-ar="0.5577"><video muted loop playsinline controls preload="metadata" poster="img/chapters/c13-poster.jpg" style="aspect-ratio:464/832"><source src="img/chapters/c13.mp4" type="video/mp4"></video></div>
+          </div>
+          <div class="sticker pos-tl" style="--d:-1.8s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#FF8FB3" stroke="#FF8FB3" stroke-width="2" stroke-linejoin="round"/><ellipse cx="29" cy="25" rx="7" ry="4" fill="#fff" opacity=".6" transform="rotate(-30 29 25)"/><circle cx="37" cy="44" r="3.3" fill="#2c3e50"/><circle cx="63" cy="44" r="3.3" fill="#2c3e50"/><circle cx="36" cy="42.8" r="1.15" fill="#fff"/><circle cx="62" cy="42.8" r="1.15" fill="#fff"/><ellipse cx="30" cy="51" rx="5" ry="3" fill="#E8628F" opacity=".35"/><ellipse cx="70" cy="51" rx="5" ry="3" fill="#E8628F" opacity=".35"/><path d="M45.5 50 Q50 55.5 54.5 50" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 13</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Date After Sibuks</h3>
+          <p class="mt-3 text-lg leading-relaxed">Ini nihhhh, sempet juga kita date after work. Huhuhu, walaupun aku masih ada kerjaan lagi, tapi kamu mau buat nemenin aku dengan pesona imutmu ituuuu.</p>
+        </div>
+      </article>
+      <!-- Chapter 14: Finally u and me WFH yayy -->
+      <article class="chapter flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-up">
+        <div class="carousel w-full md:w-1/2" style="--ar:1.7778">
+          <div class="carousel-track">
+            <a class="slide" href="img/chapters/c14-1.jpg" draggable="false" data-ar="1.7778"><img src="img/chapters/c14-1.jpg" alt="Finally u and me WFH yayy, foto 1" width="1280" height="720" draggable="false" loading="lazy"></a>
+          </div>
+          <div class="sticker pos-br" style="--d:-2.4s" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M26 76 C10 76 5 62 12 52 C14 44 22 40 30 42 C32 28 46 20 58 26 C66 18 82 24 82 38 C94 38 98 54 90 65 C86 73 80 76 74 76 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M26 76 C10 76 5 62 12 52 C14 44 22 40 30 42 C32 28 46 20 58 26 C66 18 82 24 82 38 C94 38 98 54 90 65 C86 73 80 76 74 76 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="2" stroke-linejoin="round"/><ellipse cx="36" cy="40" rx="8" ry="4" fill="#fff" opacity=".5" transform="rotate(-25 36 40)"/><circle cx="37" cy="56" r="3.3" fill="#2c3e50"/><circle cx="63" cy="56" r="3.3" fill="#2c3e50"/><circle cx="36" cy="54.8" r="1.15" fill="#fff"/><circle cx="62" cy="54.8" r="1.15" fill="#fff"/><ellipse cx="30" cy="63" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="70" cy="63" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><path d="M45.5 62 Q50 67.5 54.5 62" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></div>
+          <button type="button" class="carousel-btn prev" aria-label="Foto sebelumnya">&#8249;</button>
+          <button type="button" class="carousel-btn next" aria-label="Foto berikutnya">&#8250;</button>
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+        <div class="md:w-1/2 text-left">
+          <span class="chapter-label">Chapter 14</span>
+          <h3 class="text-2xl md:text-3xl font-anime mt-3 chapter-title">Finally u and me WFH yayy</h3>
+          <p class="mt-3 text-lg leading-relaxed">And last one, ada juga kesempatan WFH bareng, jalan ke cafe, and ngobrol di rumahmu.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Section 4: Notif Favorit Dduy -->
+  <section class="my-16 md:my-24">
+    <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">Notif Favorit Dduy</h2>
+    <div id="lightgallery" class="gallery">
+      <a href="img/gallery/g01.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="80"><img src="img/gallery/g01.jpg" alt="Notif Favorit Dduy, foto 1" width="851" height="1156" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g02.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="160"><img src="img/gallery/g02.jpg" alt="Notif Favorit Dduy, foto 2" width="787" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g03.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="240"><img src="img/gallery/g03.jpg" alt="Notif Favorit Dduy, foto 3" width="960" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g04.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="0"><img src="img/gallery/g04.jpg" alt="Notif Favorit Dduy, foto 4" width="787" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g05.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="80"><img src="img/gallery/g05.jpg" alt="Notif Favorit Dduy, foto 5" width="720" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g06.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="160"><img src="img/gallery/g06.jpg" alt="Notif Favorit Dduy, foto 6" width="953" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g07.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="240"><img src="img/gallery/g07.jpg" alt="Notif Favorit Dduy, foto 7" width="950" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g08.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="0"><img src="img/gallery/g08.jpg" alt="Notif Favorit Dduy, foto 8" width="1050" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g09.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="80"><img src="img/gallery/g09.jpg" alt="Notif Favorit Dduy, foto 9" width="787" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g10.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="160"><img src="img/gallery/g10.jpg" alt="Notif Favorit Dduy, foto 10" width="1050" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g11.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="240"><img src="img/gallery/g11.jpg" alt="Notif Favorit Dduy, foto 11" width="1050" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g12.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="0"><img src="img/gallery/g12.jpg" alt="Notif Favorit Dduy, foto 12" width="787" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g13.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="80"><img src="img/gallery/g13.jpg" alt="Notif Favorit Dduy, foto 13" width="787" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g14.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="160"><img src="img/gallery/g14.jpg" alt="Notif Favorit Dduy, foto 14" width="787" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g15.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="240"><img src="img/gallery/g15.jpg" alt="Notif Favorit Dduy, foto 15" width="960" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g16.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="0"><img src="img/gallery/g16.jpg" alt="Notif Favorit Dduy, foto 16" width="1050" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g17.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="80"><img src="img/gallery/g17.jpg" alt="Notif Favorit Dduy, foto 17" width="960" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g18.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="160"><img src="img/gallery/g18.jpg" alt="Notif Favorit Dduy, foto 18" width="1050" height="1400" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g19.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="240"><img src="img/gallery/g19.jpg" alt="Notif Favorit Dduy, foto 19" width="960" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g20.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="0"><img src="img/gallery/g20.jpg" alt="Notif Favorit Dduy, foto 20" width="960" height="1280" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g21.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="80"><img src="img/gallery/g21.jpg" alt="Notif Favorit Dduy, foto 21" width="800" height="600" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g22.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="160"><img src="img/gallery/g22.jpg" alt="Notif Favorit Dduy, foto 22" width="1280" height="960" loading="lazy" draggable="false"></a>
+      <a href="img/gallery/g23.jpg" class="gal-item" draggable="false" data-aos="zoom-in" data-aos-delay="240"><img src="img/gallery/g23.jpg" alt="Notif Favorit Dduy, foto 23" width="960" height="1280" loading="lazy" draggable="false"></a>
+    </div>
+  </section>
+
+  <!-- Section 5: Finale -->
+  <section class="my-16 md:my-24 text-center" data-aos="fade-up">
+    <h2 class="text-4xl md:text-5xl font-anime mb-10">Happy Birthday Acaa</h2>
+
+    <button type="button" id="letter-btn" class="letter-btn" aria-haspopup="dialog" aria-label="Buka surat untuk Acaa">
+      <span class="env">
+        <svg class="e-back" viewBox="0 0 260 172" preserveAspectRatio="none" aria-hidden="true"><rect width="260" height="172" fill="#FF8FB3"/></svg>
+        <span class="e-sheet" aria-hidden="true"></span>
+        <svg class="e-front" viewBox="0 0 260 172" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="0,0 132,98 0,172" fill="#FFC6D7"/>
+          <polygon points="260,0 128,98 260,172" fill="#FFBED1"/>
+          <polygon points="0,172 130,84 260,172" fill="#FFB0C8"/>
+          <path d="M0 0 L132 98 L0 172 M260 0 L128 98 L260 172 M0 172 L130 84 L260 172" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span class="e-flapwrap" aria-hidden="true">
+          <span class="e-flap">
+            <span class="f-out">
+              <svg viewBox="0 0 260 108" preserveAspectRatio="none"><polygon points="2,0 258,0 130,106" fill="#FF7BA5" stroke="#FF7BA5" stroke-width="5" stroke-linejoin="round"/><path d="M4 2 L130 104 L256 2" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round"/></svg>
+              <span class="e-seal"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/><path d="M50 88 C20 66 8 48 8 32 C8 18 19 9 31 9 C40 9 46 14 50 21 C54 14 60 9 69 9 C81 9 92 18 92 32 C92 48 80 66 50 88 Z" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="2" stroke-linejoin="round"/><ellipse cx="29" cy="25" rx="7" ry="4" fill="#fff" opacity=".6" transform="rotate(-30 29 25)"/><circle cx="37" cy="44" r="3.3" fill="#2c3e50"/><circle cx="63" cy="44" r="3.3" fill="#2c3e50"/><circle cx="36" cy="42.8" r="1.15" fill="#fff"/><circle cx="62" cy="42.8" r="1.15" fill="#fff"/><ellipse cx="30" cy="51" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="70" cy="51" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><path d="M45.5 50 Q50 55.5 54.5 50" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></span>
+            </span>
+            <span class="f-in"><svg viewBox="0 0 260 108" preserveAspectRatio="none"><polygon points="2,0 258,0 130,106" fill="#FFDCE7" stroke="#FFDCE7" stroke-width="5" stroke-linejoin="round"/></svg></span>
+          </span>
+        </span>
+        <span class="e-extras" aria-hidden="true"><span class="e-star"><svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" focusable="false"><polygon points="50.0,16.0 60.6,37.4 84.2,40.9 67.1,57.6 71.2,81.1 50.0,70.0 28.8,81.1 32.9,57.6 15.8,40.9 39.4,37.4" fill="#ffffff" stroke="#ffffff" stroke-width="22" stroke-linejoin="round"/><polygon points="50.0,16.0 60.6,37.4 84.2,40.9 67.1,57.6 71.2,81.1 50.0,70.0 28.8,81.1 32.9,57.6 15.8,40.9 39.4,37.4" fill="#6CBBF2" stroke="#6CBBF2" stroke-width="10" stroke-linejoin="round"/><circle cx="39" cy="54" r="3" fill="#2c3e50"/><circle cx="61" cy="54" r="3" fill="#2c3e50"/><circle cx="38" cy="52.8" r="1.05" fill="#fff"/><circle cx="60" cy="52.8" r="1.05" fill="#fff"/><ellipse cx="32" cy="61" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><ellipse cx="68" cy="61" rx="5" ry="3" fill="#3D90D6" opacity=".35"/><path d="M45.5 60 Q50 65.5 54.5 60" fill="none" stroke="#2c3e50" stroke-width="2.3" stroke-linecap="round"/></svg></span></span>
+      </span>
+    </button>
+  </section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="bg-navy text-white p-8 text-center">
+  <p>Enjoy your day to the fullest.</p>
+  <p class="text-sm opacity-70 mt-2">Hope you liked it...</p>
+</footer>
+
+<!-- Surprise card (opens from the "23 years old" badge) -->
+<div id="id-modal" class="id-modal" role="dialog" aria-modal="true" aria-label="Kejutan kecil" hidden>
+  <div class="id-backdrop"></div>
+  <div class="id-stage" id="id-stage">
+    <div class="id-card" id="id-card"><img src="img/id-card.jpg" alt="KTP versi Dduy untuk Acaa" draggable="false"></div>
+    <p class="id-hint" id="id-hint" aria-hidden="true">geser &rarr;</p>
+    <button type="button" class="id-close" id="id-close" aria-label="Tutup">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Letter mini game -->
+<div id="game" class="game" hidden>
+  <div class="game-dim"></div>
+  <div class="game-pastel"></div>
+  <div class="fly-layer" id="fly-layer"></div>
+
+  <section class="rules" id="rules" role="dialog" aria-modal="true" aria-labelledby="rules-title" hidden>
+    <div class="rules-paper">
+      <h2 id="rules-title" class="font-anime">Peraturan Penting!</h2>
+      <ol class="rules-list">
+        <li><b>1</b><span>kamu tidak bisa keluar dari tab ini</span></li>
+        <li><b>2</b><span>harus berbicara sejujur jujurnya</span></li>
+        <li><b>3</b><span>ini adalah pesan terima kasih Acaa ke Dduy, jadi harus tulus yaaaaa</span></li>
+      </ol>
+      <button type="button" class="candy rules-ok" id="rules-ok">yes aku mengerti</button>
+      <p class="rules-note">Pas kamu klik tombol ini, suaramu mulai direkam selama 5 menit dan disimpan di folder Videos di laptopmu. Browser bakal minta izin mic dulu ya.</p>
+      <p class="rules-err" id="rules-err" role="alert" hidden></p>
+    </div>
+  </section>
+
+  <section class="rec" id="rec" hidden>
+    <button type="button" class="candy rec-stop" id="rec-stop">segini aja yaww</button>
+    <div class="rec-badge"><i></i>merekam suara</div>
+    <div class="rec-pic"><img src="img/recording.webp" alt="Recording" draggable="false"></div>
+    <div class="rec-time font-anime" id="rec-time" role="timer" aria-live="off" style="--p:0">05:00</div>
+    <div class="rec-bar"><span id="rec-bar"></span></div>
+  </section>
+
+</div>
+
+<div class="rec-toast" id="rec-toast" role="status" hidden></div>
+
+<!-- Shown when the visitor leaves the page during the game -->
+<div class="guard" id="guard" hidden>
+  <p class="guard-text font-anime">eits jangan <span class="nb">kemana-mana</span> kamu</p>
+  <button type="button" class="guard-go" id="guard-go" hidden>click to continue</button>
+</div>
+
+<!-- Music toggle -->
+<button type="button" id="music-fab" class="music-fab" aria-label="Matikan musik" hidden><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
+
+
+<!-- These scripts are for the animations and photo gallery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+
+<!-- Link to your new external JavaScript file -->
+<script src="script.js"></script>
+</body>
+</html>
